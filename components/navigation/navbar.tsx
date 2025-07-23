@@ -6,7 +6,11 @@ import { Button } from "@/components/ui/button"
 import { teacherData } from "@/lib/data"
 import { Menu, X } from "lucide-react"
 
-export function Navbar() {
+interface NavbarProps {
+  onNavigate?: (section: string) => void
+}
+
+export function Navbar({ onNavigate }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -18,9 +22,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    element?.scrollIntoView({ behavior: "smooth" })
+  const handleNavigation = (sectionId: string) => {
+    if (onNavigate) {
+      onNavigate(sectionId)
+    }
     setIsMobileMenuOpen(false)
   }
 
@@ -35,7 +40,7 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
         isScrolled
           ? "bg-gradient-to-r from-stone-900/95 via-stone-800/95 to-stone-900/95 backdrop-blur-md border-b border-amber-900/20 shadow-2xl"
           : "bg-transparent"
@@ -44,8 +49,9 @@ export function Navbar() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <motion.div
-            className="text-xl font-bold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent"
+            className="text-xl font-bold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent cursor-pointer"
             whileHover={{ scale: 1.05 }}
+            onClick={() => handleNavigation("hero")}
           >
             {teacherData.personal.name}
           </motion.div>
@@ -55,7 +61,7 @@ export function Navbar() {
             {navItems.map((item) => (
               <motion.button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavigation(item.id)}
                 className="text-stone-300 hover:text-amber-200 transition-colors relative group"
                 whileHover={{ y: -2 }}
               >
@@ -67,7 +73,7 @@ export function Navbar() {
 
           <div className="flex items-center gap-4">
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => handleNavigation("contact")}
               className="bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Contacto
@@ -91,7 +97,7 @@ export function Navbar() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavigation(item.id)}
                 className="block w-full text-left py-3 px-4 text-stone-300 hover:text-amber-200 hover:bg-stone-800/50 transition-all rounded-lg"
               >
                 {item.label}

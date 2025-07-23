@@ -1,6 +1,9 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Navbar } from "@/components/navigation/navbar"
+import { IconNavigation } from "@/components/navigation/icon-navigation"
+import { SectionContainer } from "@/components/sections/section-container"
 import { HeroSection } from "@/components/sections/hero-section"
 import { AboutSection } from "@/components/sections/about-section"
 import { ExperienceSection } from "@/components/sections/experience-section"
@@ -10,8 +13,29 @@ import { ContactSection } from "@/components/sections/contact-section"
 import { Footer } from "@/components/layout/footer"
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState("hero")
+
+  // Auto-hide navbar when using icon navigation
+  const [showNavbar, setShowNavbar] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (activeSection !== "hero") {
+        setShowNavbar(false)
+      }
+    }, 2000)
+    return () => clearTimeout(timer)
+  }, [activeSection])
+
+  const handleSectionChange = (sectionId: string) => {
+    setActiveSection(sectionId)
+    if (sectionId === "hero") {
+      setShowNavbar(true)
+    }
+  }
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-stone-950 via-stone-900 via-30% to-amber-950/30 relative">
+    <main className="min-h-screen bg-gradient-to-br from-stone-950 via-stone-900 via-30% to-amber-950/30 relative overflow-hidden">
       {/* Background Pattern Global */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-transparent to-stone-900/60" />
@@ -23,16 +47,38 @@ export default function Home() {
         />
       </div>
 
+      {/* Navbar - Solo visible en hero o cuando se requiera */}
+      {showNavbar && <Navbar />}
+
+      {/* Icon Navigation */}
+      <IconNavigation activeSection={activeSection} onSectionChange={handleSectionChange} />
+
       {/* Content with relative positioning */}
       <div className="relative z-10">
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <EducationSection />
-        <ExpertiseSection />
-        <ContactSection />
-        <Footer />
+        <SectionContainer isActive={activeSection === "hero"} sectionId="hero">
+          <HeroSection onNavigate={handleSectionChange} />
+        </SectionContainer>
+
+        <SectionContainer isActive={activeSection === "about"} sectionId="about">
+          <AboutSection />
+        </SectionContainer>
+
+        <SectionContainer isActive={activeSection === "experience"} sectionId="experience">
+          <ExperienceSection />
+        </SectionContainer>
+
+        <SectionContainer isActive={activeSection === "education"} sectionId="education">
+          <EducationSection />
+        </SectionContainer>
+
+        <SectionContainer isActive={activeSection === "expertise"} sectionId="expertise">
+          <ExpertiseSection />
+        </SectionContainer>
+
+        <SectionContainer isActive={activeSection === "contact"} sectionId="contact">
+          <ContactSection />
+          <Footer />
+        </SectionContainer>
       </div>
     </main>
   )
