@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Navbar } from "@/components/navigation/navbar"
 import { IconNavigation } from "@/components/navigation/icon-navigation"
 import { SectionContainer } from "@/components/sections/section-container"
@@ -15,23 +15,8 @@ import { Footer } from "@/components/layout/footer"
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero")
 
-  // Auto-hide navbar when using icon navigation
-  const [showNavbar, setShowNavbar] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (activeSection !== "hero") {
-        setShowNavbar(false)
-      }
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [activeSection])
-
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId)
-    if (sectionId === "hero") {
-      setShowNavbar(true)
-    }
   }
 
   return (
@@ -47,14 +32,14 @@ export default function Home() {
         />
       </div>
 
-      {/* Navbar - Solo visible en hero o cuando se requiera */}
-      {showNavbar && <Navbar />}
+      {/* Navbar - Siempre visible */}
+      <Navbar onNavigate={handleSectionChange} />
 
       {/* Icon Navigation */}
       <IconNavigation activeSection={activeSection} onSectionChange={handleSectionChange} />
 
       {/* Content with relative positioning */}
-      <div className="relative z-10">
+      <div className="relative z-10 pt-20">
         <SectionContainer isActive={activeSection === "hero"} sectionId="hero">
           <HeroSection onNavigate={handleSectionChange} />
         </SectionContainer>
@@ -77,9 +62,11 @@ export default function Home() {
 
         <SectionContainer isActive={activeSection === "contact"} sectionId="contact">
           <ContactSection />
-          <Footer />
         </SectionContainer>
       </div>
+
+      {/* Footer - Siempre visible */}
+      <Footer />
     </main>
   )
 }

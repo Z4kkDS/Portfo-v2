@@ -13,24 +13,24 @@ export function SectionContainer({ children, isActive, sectionId }: SectionConta
   const variants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.95,
+      y: 30,
+      scale: 0.98,
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.6,
+        duration: 0.5,
         ease: "easeOut",
       },
     },
     exit: {
       opacity: 0,
-      y: -50,
-      scale: 0.95,
+      y: -30,
+      scale: 0.98,
       transition: {
-        duration: 0.4,
+        duration: 0.3,
         ease: "easeIn",
       },
     },
@@ -45,9 +45,9 @@ export function SectionContainer({ children, isActive, sectionId }: SectionConta
           initial="hidden"
           animate="visible"
           exit="exit"
-          className="min-h-screen flex items-center justify-center py-16"
+          className="min-h-[calc(100vh-160px)] flex items-center justify-center py-8"
         >
-          {children}
+          <div className="w-full">{children}</div>
         </motion.section>
       )}
     </AnimatePresence>
