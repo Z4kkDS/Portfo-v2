@@ -1,175 +1,180 @@
-// 🔧 ARCHIVO DE CONFIGURACIÓN - MODIFICA AQUÍ LA INFORMACIÓN DE TU AMIGO
 export const teacherData = {
-  // Información Personal
   personal: {
-    name: "Prof. Matias Riffo Jara",
+    name: "Prof. Carlos Mendoza",
     title: "Profesor Particular Especializado",
     subtitle: "Clases Particulares",
     description:
-      "Más de 12 años de experiencia ayudando a estudiantes a alcanzar sus metas académicas. Metodología adaptada a cada alumno para garantizar el éxito.",
-    yearsExperience: 12,
-    totalStudents: 250,
-    successRate: 96,
-    profileImage: "/placeholder.svg?height=320&width=320&text=Foto+Profesor",
-    aboutImage: "/placeholder.svg?height=400&width=400&text=Enseñando",
+      "Transformo desafíos académicos en logros exitosos a través de metodologías personalizadas y un enfoque centrado en cada estudiante.",
+    experience: "8",
+    totalStudents: "150",
+    successRate: "95",
+    profileImage: "/placeholder.svg?height=400&width=400",
+    aboutImage: "/placeholder.svg?height=400&width=400",
   },
-
-  // Información de Contacto
-  contact: {
-    email: "carlos.mendoza@email.com",
-    phone: "+52 55 1234 5678",
-    location: "Ciudad de México, México",
-    whatsapp: "+525512345678",
-  },
-
-  // Sobre Mí
   about: {
     description1:
-      "Soy un educador apasionado con más de una década de experiencia en la enseñanza. Mi enfoque se centra en crear un ambiente de aprendizaje personalizado donde cada estudiante puede desarrollar su máximo potencial.",
+      "Con más de 8 años de experiencia en educación, me especializo en crear estrategias de aprendizaje únicas para cada estudiante. Mi enfoque se basa en identificar las fortalezas individuales y convertir las dificultades en oportunidades de crecimiento.",
     description2:
-      "Creo firmemente que cada alumno tiene una forma única de aprender, por lo que adapto mis métodos de enseñanza para satisfacer las necesidades individuales de cada estudiante. Como amante del café, encuentro en cada taza la inspiración para brindar clases con la misma dedicación y cuidado.",
+      "Creo firmemente que cada estudiante tiene un potencial único. Mi misión es desbloquear ese potencial a través de métodos innovadores, paciencia y dedicación personalizada que garantizan resultados excepcionales.",
   },
-
-  // Experiencia Profesional
   experience: [
     {
-      title: "Profesor Particular",
-      company: "Independiente",
+      title: "Profesor Particular Senior",
+      company: "Freelance - Clases Privadas",
       period: "2020 - Presente",
       current: true,
       description:
-        "Clases particulares personalizadas para estudiantes de secundaria y preparatoria. Especialización en matemáticas, física y química.",
+        "Brindo clases particulares personalizadas a estudiantes de secundaria y preparatoria, enfocándome en matemáticas, física y química con metodologías adaptadas a cada estilo de aprendizaje.",
       achievements: [
-        "Mejora promedio del 45% en calificaciones de estudiantes",
-        "Desarrollo de planes de estudio individualizados",
+        "95% de estudiantes mejoraron sus calificaciones en 3 meses",
+        "Desarrollo de material didáctico personalizado para cada alumno",
+        "Implementación de técnicas de estudio efectivas y duraderas",
         "Preparación exitosa para exámenes de admisión universitaria",
       ],
     },
     {
-      title: "Profesor de Matemáticas",
-      company: "Instituto Tecnológico Regional",
-      period: "2016 - 2020",
+      title: "Coordinador Académico",
+      company: "Instituto Educativo San Patricio",
+      period: "2018 - 2020",
       current: false,
       description:
-        "Docente de tiempo completo impartiendo cálculo diferencial, álgebra lineal y estadística para estudiantes de ingeniería.",
+        "Lideré un equipo de 12 profesores, desarrollé programas curriculares innovadores y supervisé el rendimiento académico de más de 300 estudiantes.",
       achievements: [
-        "Coordinación de laboratorio de matemáticas",
-        "Desarrollo de material didáctico innovador",
-        "Mentoría de estudiantes en proyectos de investigación",
+        "Incremento del 40% en el rendimiento académico general",
+        "Implementación de programa de tutorías personalizadas",
+        "Reducción del 60% en índices de reprobación",
+        "Capacitación continua del equipo docente en nuevas metodologías",
       ],
     },
     {
-      title: "Profesor Adjunto",
-      company: "Universidad Nacional",
-      period: "2012 - 2016",
+      title: "Profesor de Matemáticas y Ciencias",
+      company: "Colegio Bilingüe Internacional",
+      period: "2016 - 2018",
       current: false,
       description:
-        "Apoyo en cátedras de matemáticas aplicadas y física para estudiantes de primer y segundo año universitario.",
+        "Impartí clases de matemáticas, física y química a estudiantes de nivel medio superior, desarrollando estrategias innovadoras para facilitar el aprendizaje de conceptos complejos.",
       achievements: [
-        "Clases de apoyo y tutorías grupales",
-        "Evaluación y seguimiento académico",
-        "Participación en comités académicos",
+        "Reconocimiento como 'Profesor del Año' en 2017",
+        "Desarrollo de laboratorio virtual para experimentos de química",
+        "100% de aprobación en exámenes estandarizados",
+        "Creación de programa de olimpiadas científicas estudiantiles",
       ],
     },
   ],
-
-  // Educación
   education: [
     {
-      degree: "Maestría en Educación Matemática",
-      institution: "Universidad Pedagógica Nacional",
-      period: "2010 - 2012",
       type: "Maestría",
-      description:
-        "Especialización en metodologías innovadoras para la enseñanza de matemáticas en educación media y superior.",
-    },
-    {
-      degree: "Licenciatura en Matemáticas",
+      degree: "Maestría en Educación Matemática",
       institution: "Universidad Nacional Autónoma",
-      period: "2006 - 2010",
-      type: "Licenciatura",
+      period: "2014 - 2016",
       description:
-        "Formación sólida en matemáticas puras y aplicadas, con énfasis en análisis matemático y álgebra abstracta.",
+        "Especialización en metodologías innovadoras para la enseñanza de matemáticas, con enfoque en aprendizaje personalizado y uso de tecnologías educativas.",
     },
     {
-      degree: "Certificación en Pedagogía Digital",
-      institution: "Instituto de Tecnología Educativa",
-      period: "2021",
+      type: "Licenciatura",
+      degree: "Licenciatura en Matemáticas Aplicadas",
+      institution: "Instituto Tecnológico Superior",
+      period: "2010 - 2014",
+      description:
+        "Formación sólida en matemáticas puras y aplicadas, con especialización en modelado matemático y resolución de problemas complejos.",
+    },
+    {
       type: "Certificación",
-      description: "Especialización en herramientas digitales para la educación y metodologías de enseñanza virtual.",
+      degree: "Certificación en Pedagogía Digital",
+      institution: "Centro de Innovación Educativa",
+      period: "2019",
+      description:
+        "Capacitación avanzada en herramientas digitales para la educación, metodologías de enseñanza virtual y diseño de contenido educativo interactivo.",
     },
     {
+      type: "Certificación",
       degree: "Diplomado en Psicopedagogía",
-      institution: "Centro de Estudios Pedagógicos",
-      period: "2019",
-      type: "Diplomado",
-      description: "Formación en técnicas de diagnóstico y tratamiento de dificultades de aprendizaje en matemáticas.",
+      institution: "Universidad Pedagógica Nacional",
+      period: "2017",
+      description:
+        "Formación especializada en técnicas de aprendizaje, identificación de dificultades académicas y estrategias de intervención educativa personalizada.",
     },
   ],
-
-  // Áreas de Expertise
   expertise: [
     {
-      title: "Matemáticas",
-      icon: "BookOpen",
+      title: "Matemáticas Avanzadas",
+      icon: "Award",
       skills: [
-        "Álgebra y Geometría",
+        "Álgebra y Geometría Analítica",
         "Cálculo Diferencial e Integral",
-        "Trigonometría",
         "Estadística y Probabilidad",
         "Matemáticas Financieras",
+        "Preparación para exámenes de admisión",
       ],
     },
     {
-      title: "Física",
+      title: "Ciencias Físicas",
       icon: "BookOpen",
-      skills: ["Mecánica Clásica", "Termodinámica", "Electromagnetismo", "Óptica", "Física Moderna"],
+      skills: [
+        "Mecánica Clásica y Moderna",
+        "Termodinámica y Electromagnetismo",
+        "Óptica y Física Cuántica",
+        "Resolución de problemas complejos",
+        "Experimentos y aplicaciones prácticas",
+      ],
     },
     {
-      title: "Química",
-      icon: "BookOpen",
-      skills: ["Química General", "Química Orgánica", "Química Inorgánica", "Bioquímica", "Química Analítica"],
+      title: "Química General",
+      icon: "GraduationCap",
+      skills: [
+        "Química Orgánica e Inorgánica",
+        "Estequiometría y Balanceo",
+        "Termodinámica Química",
+        "Cinética y Equilibrio Químico",
+        "Laboratorio y experimentación",
+      ],
+    },
+    {
+      title: "Metodologías Personalizadas",
+      icon: "User",
+      skills: [
+        "Evaluación de estilos de aprendizaje",
+        "Técnicas de estudio efectivas",
+        "Planificación académica personalizada",
+        "Seguimiento y retroalimentación continua",
+        "Desarrollo de confianza académica",
+      ],
     },
     {
       title: "Preparación de Exámenes",
-      icon: "GraduationCap",
-      skills: [
-        "Examen de Admisión UNAM",
-        "Examen de Admisión IPN",
-        "CENEVAL",
-        "Exámenes Internacionales",
-        "Certificaciones Técnicas",
-      ],
-    },
-    {
-      title: "Apoyo Académico",
-      icon: "User",
-      skills: [
-        "Técnicas de Estudio",
-        "Organización del Tiempo",
-        "Manejo de Ansiedad",
-        "Motivación Académica",
-        "Desarrollo de Confianza",
-      ],
-    },
-    {
-      title: "Metodologías",
       icon: "Award",
       skills: [
-        "Aprendizaje Visual",
-        "Gamificación",
-        "Resolución de Problemas",
-        "Aprendizaje Colaborativo",
-        "Tecnología Educativa",
+        "Exámenes de admisión universitaria",
+        "Certificaciones internacionales",
+        "Evaluaciones estandarizadas",
+        "Técnicas de manejo de estrés",
+        "Simulacros y práctica intensiva",
+      ],
+    },
+    {
+      title: "Tecnología Educativa",
+      icon: "BookOpen",
+      skills: [
+        "Plataformas de aprendizaje virtual",
+        "Herramientas interactivas digitales",
+        "Simuladores y laboratorios virtuales",
+        "Gamificación del aprendizaje",
+        "Recursos multimedia educativos",
       ],
     },
   ],
-
-  // Modalidades de Clase
+  contact: {
+    email: "carlos.mendoza@email.com",
+    phone: "+52 55 1234 5678",
+    location: "Ciudad de México, México",
+    availability: "Lunes a Sábado, 9:00 AM - 8:00 PM",
+  },
   classModalities: [
-    "Clases presenciales en domicilio",
-    "Clases virtuales por videollamada",
+    "Clases presenciales individuales",
+    "Sesiones virtuales por videoconferencia",
     "Clases grupales (máximo 4 estudiantes)",
     "Intensivos de preparación para exámenes",
+    "Asesorías de tareas y proyectos",
+    "Talleres de técnicas de estudio",
   ],
 }

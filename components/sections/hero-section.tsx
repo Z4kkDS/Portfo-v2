@@ -1,121 +1,94 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { teacherData } from "@/lib/data"
-import { Coffee } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 
-export function HeroSection() {
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    element?.scrollIntoView({ behavior: "smooth" })
-  }
+interface HeroSectionProps {
+  onNavigate?: (section: string) => void
+}
 
+export function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
-    <section className="pt-20 pb-16 relative overflow-hidden">
-      {/* Sección específica overlay sutil */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-stone-950/10 to-transparent" />
+    <div className="container mx-auto px-4 relative z-10">
+      <div className="text-center max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-8"
+        >
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-stone-100">
+            {teacherData.personal.subtitle.split(" ")[0]} {teacherData.personal.subtitle.split(" ")[1]}
+            <motion.span
+              className="block text-amber-400"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              Personalizadas
+            </motion.span>
+          </h1>
+          <p className="text-xl text-stone-300/90 mb-8 leading-relaxed max-w-2xl mx-auto">
+            {teacherData.personal.description}
+          </p>
+        </motion.div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          <motion.div
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+        >
+          <Button
+            onClick={() => onNavigate?.("contact")}
+            size="lg"
+            className="bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white shadow-xl hover:shadow-2xl transition-all duration-300 group"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="flex items-center gap-2 mb-4"
-            >
-              <Coffee className="h-5 w-5 text-amber-500 drop-shadow-lg" />
-              <span className="text-amber-200/90 text-sm font-medium tracking-wide">Educación con dedicación</span>
-            </motion.div>
-
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-stone-100 drop-shadow-lg">
-              {teacherData.personal.subtitle}
-              <motion.span
-                className="block bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
-                Personalizadas
-              </motion.span>
-            </h1>
-
-            <motion.p
-              className="text-xl text-stone-300/90 mb-8 leading-relaxed drop-shadow-sm"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              {teacherData.personal.description}
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
-            >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white shadow-xl hover:shadow-2xl transition-all duration-300 border-0"
-                onClick={() => scrollToSection("contact")}
-              >
-                Solicitar Clase
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-stone-600/50 text-stone-300 hover:bg-stone-800/50 bg-stone-900/30 hover:border-amber-600/50 backdrop-blur-sm"
-                onClick={() => scrollToSection("about")}
-              >
-                Conocer Más
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            Solicitar Clase Gratuita
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          </Button>
+          <Button
+            onClick={() => onNavigate?.("about")}
+            variant="outline"
+            size="lg"
+            className="border-stone-600 text-stone-300 hover:bg-stone-800/50 hover:text-amber-200 transition-all duration-300"
           >
-            <div className="relative">
-              <motion.div
-                className="w-80 h-80 mx-auto rounded-full overflow-hidden relative group"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-600/20 to-stone-800/40 z-10 rounded-full" />
-                <Image
-                  src={teacherData.personal.profileImage || "/placeholder.svg"}
-                  alt={teacherData.personal.name}
-                  width={320}
-                  height={320}
-                  className="w-full h-full object-cover filter blur-[0.5px] group-hover:blur-0 transition-all duration-500 scale-110"
-                />
-                <div className="absolute inset-0 ring-4 ring-amber-700/30 ring-offset-4 ring-offset-transparent rounded-full shadow-2xl" />
-              </motion.div>
+            Conocer Más
+          </Button>
+        </motion.div>
 
-              <motion.div
-                className="absolute -bottom-4 -right-4 bg-gradient-to-br from-amber-700 to-amber-800 text-white p-4 rounded-xl shadow-2xl backdrop-blur-sm"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1, duration: 0.5, type: "spring" }}
-              >
-                <div className="text-2xl font-bold">{teacherData.personal.yearsExperience}+</div>
-                <div className="text-sm opacity-90">Años de experiencia</div>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="flex items-center justify-center gap-8 text-stone-400"
+        >
+          <div className="text-center">
+            <div className="text-2xl font-bold text-amber-400">{teacherData.personal.experience}+</div>
+            <div className="text-sm">Años de Experiencia</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-amber-400">{teacherData.personal.totalStudents}+</div>
+            <div className="text-sm">Estudiantes</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-amber-400">{teacherData.personal.successRate}%</div>
+            <div className="text-sm">Éxito</div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="mt-12 flex flex-col items-center gap-2"
+        >
+          <p className="text-stone-400 text-sm">Usa los iconos de la derecha para navegar</p>
+          <ChevronDown className="h-5 w-5 text-amber-500 animate-bounce" />
+        </motion.div>
       </div>
-    </section>
+    </div>
   )
 }
