@@ -1,31 +1,48 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { teacherData } from "@/lib/data"
-import { Coffee, Heart } from "lucide-react"
+import { developerData } from "@/lib/data"
+import { Github, Linkedin, Twitter, Heart } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-30 py-4 bg-gradient-to-t from-stone-950/90 to-stone-900/80 backdrop-blur-md border-t border-stone-800/50">
-      <div className="container mx-auto px-4">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center justify-center gap-2 mb-1">
-            <Coffee className="h-3 w-3 text-amber-600" />
-            <p className="text-stone-300 text-sm drop-shadow-sm">
-              © 2024 {teacherData.personal.name}. Todos los derechos reservados.
-            </p>
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="fixed bottom-0 left-0 right-0 z-30 bg-slate-950/90 backdrop-blur-md border-t border-slate-800/50"
+    >
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 text-slate-400 text-sm">
+            <span>© 2024 {developerData.personal.name}</span>
+            <span>•</span>
+            <span className="flex items-center gap-1">
+              Hecho con <Heart className="h-3 w-3 text-red-500 fill-current" /> y código
+            </span>
           </div>
-          <div className="flex items-center justify-center gap-1 text-stone-400 text-xs">
-            <span>Transformando vidas a través de la educación personalizada</span>
-            <Heart className="h-2 w-2 text-amber-600" />
+
+          <div className="flex items-center gap-3">
+            {[
+              { icon: Github, href: developerData.contact.social.github },
+              { icon: Linkedin, href: developerData.contact.social.linkedin },
+              { icon: Twitter, href: developerData.contact.social.twitter },
+            ].map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-blue-400 transition-colors duration-300"
+                whileHover={{ scale: 1.2, y: -2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <social.icon className="h-4 w-4" />
+              </motion.a>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
-    </footer>
+    </motion.footer>
   )
 }

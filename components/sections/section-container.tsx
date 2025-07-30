@@ -1,53 +1,28 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import type React from "react"
+import type { ReactNode } from "react"
 
 interface SectionContainerProps {
-  children: React.ReactNode
+  children: ReactNode
   isActive: boolean
   sectionId: string
 }
 
 export function SectionContainer({ children, isActive, sectionId }: SectionContainerProps) {
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.98,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -30,
-      scale: 0.98,
-      transition: {
-        duration: 0.3,
-        ease: "easeIn",
-      },
-    },
-  }
-
   return (
     <AnimatePresence mode="wait">
       {isActive && (
         <motion.section
           key={sectionId}
-          variants={variants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-          className="min-h-[calc(100vh-160px)] flex items-center justify-center py-8"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="min-h-[calc(100vh-160px)] flex items-center justify-center py-16"
+          id={sectionId}
         >
-          <div className="w-full">{children}</div>
+          {children}
         </motion.section>
       )}
     </AnimatePresence>
