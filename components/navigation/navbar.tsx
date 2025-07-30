@@ -1,110 +1,57 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { teacherData } from "@/lib/data"
-import { Menu, X } from "lucide-react"
+import { developerData } from "@/lib/data"
 
 interface NavbarProps {
   onNavigate?: (section: string) => void
 }
 
 export function Navbar({ onNavigate }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const handleNavigation = (sectionId: string) => {
-    if (onNavigate) {
-      onNavigate(sectionId)
-    }
-    setIsMobileMenuOpen(false)
-  }
-
-  const navItems = [
-    { id: "about", label: "Sobre Mí" },
-    { id: "experience", label: "Experiencia" },
-    { id: "education", label: "Educación" },
-    { id: "expertise", label: "Expertise" },
-  ]
-
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        isScrolled
-          ? "bg-gradient-to-r from-stone-900/95 via-stone-800/95 to-stone-900/95 backdrop-blur-md border-b border-amber-900/20 shadow-2xl"
-          : "bg-transparent"
-      }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      className="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50"
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
           <motion.div
-            className="text-xl font-bold bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            onClick={() => handleNavigation("hero")}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="flex items-center gap-3"
           >
-            {teacherData.personal.name}
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-lg">
+                {developerData.personal.name
+                  .split(" ")
+                  .map((n) => n[0])
+                  .join("")}
+              </span>
+            </div>
+            <div>
+              <h1 className="text-slate-100 font-bold text-lg">{developerData.personal.name}</h1>
+              <p className="text-slate-400 text-sm">{developerData.personal.title}</p>
+            </div>
           </motion.div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => handleNavigation(item.id)}
-                className="text-stone-300 hover:text-amber-200 transition-colors relative group"
-                whileHover={{ y: -2 }}
-              >
-                {item.label}
-                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-500 to-amber-600 group-hover:w-full transition-all duration-300" />
-              </motion.button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-4">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="flex items-center gap-4"
+          >
             <Button
-              onClick={() => handleNavigation("contact")}
-              className="bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              onClick={() => onNavigate?.("contact")}
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white"
             >
-              Contacto
+              Contactar
             </Button>
-
-            {/* Mobile Menu Button */}
-            <button className="md:hidden text-stone-300" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden mt-4 py-4 border-t border-stone-700/50 bg-gradient-to-r from-stone-900/80 to-stone-800/80 backdrop-blur-sm rounded-lg"
-          >
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavigation(item.id)}
-                className="block w-full text-left py-3 px-4 text-stone-300 hover:text-amber-200 hover:bg-stone-800/50 transition-all rounded-lg"
-              >
-                {item.label}
-              </button>
-            ))}
           </motion.div>
-        )}
+        </div>
       </div>
     </motion.nav>
   )

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Home, User, Briefcase, GraduationCap, Award, Mail } from "lucide-react"
+import { Home, User, Briefcase, Code, FolderOpen, Award, Mail } from "lucide-react"
 
 interface IconNavigationProps {
   activeSection: string
@@ -12,9 +12,10 @@ export function IconNavigation({ activeSection, onSectionChange }: IconNavigatio
   const navItems = [
     { id: "hero", icon: Home, label: "Inicio" },
     { id: "about", icon: User, label: "Sobre Mí" },
-    { id: "experience", icon: Briefcase, label: "Experiencia" },
-    { id: "education", icon: GraduationCap, label: "Educación" },
-    { id: "expertise", icon: Award, label: "Expertise" },
+    { id: "services", icon: Briefcase, label: "Servicios" },
+    { id: "skills", icon: Code, label: "Habilidades" },
+    { id: "projects", icon: FolderOpen, label: "Proyectos" },
+    { id: "experience", icon: Award, label: "Experiencia" },
     { id: "contact", icon: Mail, label: "Contacto" },
   ]
 
@@ -23,7 +24,7 @@ export function IconNavigation({ activeSection, onSectionChange }: IconNavigatio
       initial={{ x: 100, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.5 }}
-      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4"
+      className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3"
     >
       {navItems.map((item, index) => {
         const Icon = item.icon
@@ -39,17 +40,17 @@ export function IconNavigation({ activeSection, onSectionChange }: IconNavigatio
           >
             <motion.button
               onClick={() => onSectionChange(item.id)}
-              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-md border ${
+              className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-300 backdrop-blur-md border ${
                 isActive
-                  ? "bg-gradient-to-r from-amber-700/80 to-amber-600/80 border-amber-500/50 shadow-lg shadow-amber-500/25"
-                  : "bg-gradient-to-r from-stone-800/60 to-stone-900/60 border-stone-700/50 hover:border-amber-700/50 hover:from-stone-700/70 hover:to-stone-800/70"
+                  ? "bg-gradient-to-r from-blue-600/90 to-indigo-600/90 border-blue-500/50 shadow-lg shadow-blue-500/25"
+                  : "bg-gradient-to-r from-slate-800/70 to-slate-900/70 border-slate-700/50 hover:border-blue-600/50 hover:from-slate-700/80 hover:to-slate-800/80"
               }`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
               <Icon
                 className={`h-5 w-5 transition-colors duration-300 ${
-                  isActive ? "text-white drop-shadow-lg" : "text-stone-300 group-hover:text-amber-200"
+                  isActive ? "text-white drop-shadow-lg" : "text-slate-300 group-hover:text-blue-400"
                 }`}
               />
             </motion.button>
@@ -58,10 +59,10 @@ export function IconNavigation({ activeSection, onSectionChange }: IconNavigatio
             <motion.div
               initial={{ opacity: 0, x: 10 }}
               whileHover={{ opacity: 1, x: 0 }}
-              className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-2 bg-gradient-to-r from-stone-900/90 to-stone-800/90 backdrop-blur-md border border-stone-700/50 rounded-lg text-stone-200 text-sm whitespace-nowrap pointer-events-none"
+              className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-2 bg-gradient-to-r from-slate-950/95 to-slate-900/95 backdrop-blur-md border border-slate-700/50 rounded-lg text-slate-200 text-sm whitespace-nowrap pointer-events-none shadow-xl"
             >
               {item.label}
-              <div className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-4 border-l-stone-800/90 border-y-4 border-y-transparent" />
+              <div className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-4 border-l-slate-900/95 border-y-4 border-y-transparent" />
             </motion.div>
           </motion.div>
         )

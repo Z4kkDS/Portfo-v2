@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { teacherData } from "@/lib/data"
-import { ArrowRight, ChevronDown } from "lucide-react"
+import { developerData } from "@/lib/data"
+import { ArrowRight, ChevronDown, Download } from "lucide-react"
 
 interface HeroSectionProps {
   onNavigate?: (section: string) => void
@@ -19,19 +19,29 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-stone-100">
-            {teacherData.personal.subtitle.split(" ")[0]} {teacherData.personal.subtitle.split(" ")[1]}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-blue-400 text-lg mb-4 font-medium"
+          >
+            {developerData.personal.greeting}
+          </motion.p>
+
+          <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-slate-100">
+            {developerData.personal.name}
             <motion.span
-              className="block text-amber-400"
+              className="block text-blue-400 text-3xl lg:text-5xl mt-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              Personalizadas
+              {developerData.personal.title}
             </motion.span>
           </h1>
-          <p className="text-xl text-stone-300/90 mb-8 leading-relaxed max-w-2xl mx-auto">
-            {teacherData.personal.description}
+
+          <p className="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
+            {developerData.personal.description}
           </p>
         </motion.div>
 
@@ -42,20 +52,30 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
         >
           <Button
-            onClick={() => onNavigate?.("contact")}
+            onClick={() => onNavigate?.("projects")}
             size="lg"
-            className="bg-gradient-to-r from-amber-700 to-amber-600 hover:from-amber-600 hover:to-amber-500 text-white shadow-xl hover:shadow-2xl transition-all duration-300 group"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 group"
           >
-            Solicitar Clase Gratuita
+            Ver Proyectos
             <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
+
           <Button
-            onClick={() => onNavigate?.("about")}
+            onClick={() => onNavigate?.("contact")}
             variant="outline"
             size="lg"
-            className="border-stone-600 text-stone-300 hover:bg-stone-800/50 hover:text-amber-200 transition-all duration-300"
+            className="border-slate-600 text-slate-300 hover:bg-slate-800/50 hover:text-blue-400 hover:border-blue-500/50 transition-all duration-300"
           >
-            Conocer Más
+            Contactar
+          </Button>
+
+          <Button
+            variant="ghost"
+            size="lg"
+            className="text-slate-300 hover:text-blue-400 hover:bg-slate-800/30 transition-all duration-300 group"
+          >
+            <Download className="mr-2 h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
+            Descargar CV
           </Button>
         </motion.div>
 
@@ -63,19 +83,19 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="flex items-center justify-center gap-8 text-stone-400"
+          className="flex items-center justify-center gap-8 text-slate-400"
         >
           <div className="text-center">
-            <div className="text-2xl font-bold text-amber-400">{teacherData.personal.experience}+</div>
+            <div className="text-2xl font-bold text-blue-400">{developerData.personal.experience}+</div>
             <div className="text-sm">Años de Experiencia</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-amber-400">{teacherData.personal.totalStudents}+</div>
-            <div className="text-sm">Estudiantes</div>
+            <div className="text-2xl font-bold text-blue-400">{developerData.personal.projectsCompleted}+</div>
+            <div className="text-sm">Proyectos Completados</div>
           </div>
           <div className="text-center">
-            <div className="text-2xl font-bold text-amber-400">{teacherData.personal.successRate}%</div>
-            <div className="text-sm">Éxito</div>
+            <div className="text-2xl font-bold text-blue-400">{developerData.personal.clientsSatisfied}+</div>
+            <div className="text-sm">Clientes Satisfechos</div>
           </div>
         </motion.div>
 
@@ -85,8 +105,8 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           transition={{ delay: 1.2, duration: 0.6 }}
           className="mt-12 flex flex-col items-center gap-2"
         >
-          <p className="text-stone-400 text-sm">Usa los iconos de la derecha para navegar</p>
-          <ChevronDown className="h-5 w-5 text-amber-500 animate-bounce" />
+          <p className="text-slate-400 text-sm">Explora mi trabajo y habilidades</p>
+          <ChevronDown className="h-5 w-5 text-blue-400 animate-bounce" />
         </motion.div>
       </div>
     </div>
