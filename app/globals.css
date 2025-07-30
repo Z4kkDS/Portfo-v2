@@ -4,26 +4,64 @@
 
 @layer base {
   :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
-    --radius: 0.75rem;
+    --background: 200 17% 97%; /* Shark 50 */
+    --foreground: 200 17% 17%; /* Shark 950 */
+    --card: 200 17% 97%; /* Shark 50 */
+    --card-foreground: 200 17% 17%; /* Shark 950 */
+    --popover: 200 17% 97%; /* Shark 50 */
+    --popover-foreground: 200 17% 17%; /* Shark 950 */
+    --primary: 217.2 91.2% 59.8%; /* Keeping existing blue */
+    --primary-foreground: 222.2 84% 4.9%; /* Keeping existing dark blue */
+    --secondary: 200 17% 82%; /* Shark 200 */
+    --secondary-foreground: 200 17% 17%; /* Shark 950 */
+    --muted: 200 17% 82%; /* Shark 200 */
+    --muted-foreground: 200 17% 42%; /* Shark 500 */
+    --accent: 200 17% 82%; /* Shark 200 */
+    --accent-foreground: 200 17% 17%; /* Shark 950 */
+    --destructive: 0 84.2% 60.2%; /* Keeping existing destructive */
+    --destructive-foreground: 0 0% 98%; /* Keeping existing destructive-foreground */
+    --border: 200 17% 82%; /* Shark 200 */
+    --input: 200 17% 82%; /* Shark 200 */
+    --ring: 200 17% 30%; /* Shark 700 */
+    --radius: 0.5rem;
+    --sidebar-background: 200 17% 97%; /* Shark 50 */
+    --sidebar-foreground: 200 17% 30%; /* Shark 700 */
+    --sidebar-primary: 217.2 91.2% 59.8%; /* Keeping existing blue */
+    --sidebar-primary-foreground: 222.2 84% 4.9%; /* Keeping existing dark blue */
+    --sidebar-accent: 200 17% 82%; /* Shark 200 */
+    --sidebar-accent-foreground: 200 17% 17%; /* Shark 950 */
+    --sidebar-border: 200 17% 82%; /* Shark 200 */
+    --sidebar-ring: 200 17% 30%; /* Shark 700 */
+  }
+
+  .dark {
+    --background: 200 17% 17%; /* Shark 950 */
+    --foreground: 200 17% 97%; /* Shark 50 */
+    --card: 200 17% 17%; /* Shark 950 */
+    --card-foreground: 200 17% 97%; /* Shark 50 */
+    --popover: 200 17% 17%; /* Shark 950 */
+    --popover-foreground: 200 17% 97%; /* Shark 50 */
+    --primary: 217.2 91.2% 59.8%; /* Keeping existing blue */
+    --primary-foreground: 0 0% 100%; /* Keeping existing white */
+    --secondary: 200 17% 27%; /* Shark 800 */
+    --secondary-foreground: 200 17% 97%; /* Shark 50 */
+    --muted: 200 17% 27%; /* Shark 800 */
+    --muted-foreground: 200 17% 70%; /* Shark 300 */
+    --accent: 200 17% 27%; /* Shark 800 */
+    --accent-foreground: 200 17% 97%; /* Shark 50 */
+    --destructive: 0 62.8% 30.6%; /* Keeping existing destructive */
+    --destructive-foreground: 0 0% 98%; /* Keeping existing destructive-foreground */
+    --border: 200 17% 27%; /* Shark 800 */
+    --input: 200 17% 27%; /* Shark 800 */
+    --ring: 200 17% 82%; /* Shark 200 */
+    --sidebar-background: 200 17% 17%; /* Shark 950 */
+    --sidebar-foreground: 200 17% 97%; /* Shark 50 */
+    --sidebar-primary: 217.2 91.2% 59.8%; /* Keeping existing blue */
+    --sidebar-primary-foreground: 0 0% 100%; /* Keeping existing white */
+    --sidebar-accent: 200 17% 27%; /* Shark 800 */
+    --sidebar-accent-foreground: 200 17% 97%; /* Shark 50 */
+    --sidebar-border: 200 17% 27%; /* Shark 800 */
+    --sidebar-ring: 200 17% 82%; /* Shark 200 */
   }
 }
 
